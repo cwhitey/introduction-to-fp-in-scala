@@ -1,4 +1,4 @@
-package intro
+ipackage intro
 
 /*
 This source file compiles with scalac:
