@@ -75,9 +75,9 @@ object Lists {
    * resX: List[Int] = List(1, 2, 3, 4, 5, 6, 7, 8)
    */
   def append[A](x: List[A], y: List[A]): List[A] =
-    y match {
-      case h :: rest => append(x :: h)
-      case _ => x
+    x match {
+      case h :: rest => h :: append(rest, y)
+      case _ => y
     }
 
   /*
@@ -96,7 +96,10 @@ object Lists {
    *     not infer what you mean.
    */
   def map[A, B](xs: List[A])(f: A => B): List[B] =
-    ???
+    xs match {
+      case h :: rest => f(h) :: map(rest)(f)
+      case _ => List.empty
+    }
 
   /*
    * Exercise 5:
@@ -107,7 +110,10 @@ object Lists {
    * resX: List[Int] = List(1, 2)
    */
   def filter[A](xs: List[A])(p: A => Boolean): List[A] =
-    ???
+    xs match {
+      case h :: rest => if(p(h)) h :: filter(rest)(p) else filter(rest)(p)
+      case _ => List.empty
+    }
 
   /*
    * Exercise 6:
@@ -125,7 +131,9 @@ object Lists {
    *     not infer what you mean.
    */
   def reverse[A](xs: List[A]): List[A] =
-    ???
+    xs match {
+      case h :: rest => 
+    }
 
 
   /*
